@@ -14,6 +14,7 @@ def deploy_fund_me():
         price_feed_address = config["networks"][network.show_active()][
             "eth_usd_priceFeed"
         ]
+        print("price_feed_address is ", price_feed_address)
     else:
         deploy_mocks()
         price_feed_address = MockV3Aggregator[-1].address
@@ -24,6 +25,7 @@ def deploy_fund_me():
     )
 
     print("contract deployed to ", fund_me.address)
+    print("entree fee is ", fund_me.getEntranceFee())
     return fund_me
 
 
